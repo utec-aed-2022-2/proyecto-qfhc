@@ -5,7 +5,7 @@
 **INTEGRANTES:**
 * Harold Canto
 * Franco Pacheco
-* Qespisisa Busto:Flores Rimac
+* Qespisisa Bustos
 * Christopher Flores
 
 ## INTRODUCCIÓN
