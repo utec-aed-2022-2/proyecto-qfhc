@@ -4,4 +4,5 @@
 ## Integrantes: 
 # Integrante 1: Harold Canto
 # Integrante 2: Franco Pacheco
-# Integrante 3: Qespisisa Bustos
+# Integrante 3: Qespisisa Busto:Flores Rimac
+# Integrante 4: Christopher Flores
