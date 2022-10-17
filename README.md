@@ -20,6 +20,9 @@ Tal como lo explica su nombre, es una cadena de bloques interconectados gracias 
 ### BLOCK
 En cuanto a la estructura del bloque, éste es un contenedor que almacena los datos necesarios para registrar una transacción monetaria. Cada uno de los datos ingresados modifica el código del bloque, por lo que es fácil darse cuenta si cambió al menos un dígito del número del emisor o receptor o del monto. Finalmente, también almacena el proof of work. 
 
+### PROOF OF WORK
+Éste último dato se consigue al obtener cuatro ceros al inicio del código del bloque y para ello se creó un entero "tmp" que es el único dato que podemos modificar libremente dentro del bloque. Ésta variable cambiará dentro de un loop hasta lograr el valor necesario. Para el caso de nuestro proyecto, nos dimos cuenta que lograba ésta condición al pasar los 4 dígitos, por lo que en lugar de aumentar de 1 en 1 se programó para que aumentara de 10 en 10, acortando el tiempo de búsqueda del valor necesario.
+
 ## EXPLICACIÓN DE LAS ESTRUCTURAS INTERNAS
 
 ## ANÁLISIS DE LA COMPLEJIDAD BIG O
@@ -29,6 +32,5 @@ En cuanto a la estructura del bloque, éste es un contenedor que almacena los da
 ## REFERENCIAS BIBLIOGRÁFICAS
 [“Yape del BCP, la transformación empresarial que retará Libra de Facebook”, por Sergio Sicheri](https://elcomercio.pe/tecnologia/bcp-app-yape-transformacion-empresarial-retara-libra-facebook-sergio-sicheri-nnda-noticia-650359-noticia/?ref=ecr)
 [¿Cómo la Banca puede aprovechar la tecnología Blockchain?](https://www.fisagrp.com/blogs/la-banca-aprovecha-la-tecnologia-blockchain.html)
-### PROOF OF WORK
-Éste último dato se consigue al obtener cuatro ceros al inicio del código del bloque y para ello se creó un entero "tmp" que es el único dato que podemos modificar libremente dentro del bloque. Ésta variable cambiará dentro de un loop hasta lograr el valor necesario. Para el caso de nuestro proyecto, nos dimos cuenta que lograba ésta condición al pasar los 4 dígitos, por lo que en lugar de aumentar de 1 en 1 se programó para que aumentara de 10 en 10, acortando el tiempo de búsqueda del valor necesario.
+
 
