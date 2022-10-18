@@ -9,14 +9,14 @@
 * Christopher Flores
 
 ## INTRODUCCIÓN
-El siguiente proyecto replica el funcionamiento de la aplicación YAPE a través el algoritmo *Blockchain*. Para ello se desarrollaron las estructuras "Datos", "Bloque" y finalmente "Cadena de bloques" o Blockchain como tal. Al unir éstas estructuras se puede replicar una cadena de bloques con las transacciones monetarias entre usuarios de YAPE guardando los números telefónicos del emisor, receptor y el monto que se transfiere. En ese sentido, a continuación se explicará a detalle la metodología de implementación y los resultados obtenidos al poner el sistema a prueba.
+El siguiente proyecto replica el funcionamiento de la aplicación YAPE a través el algoritmo *Blockchain*. Para ello se desarrollaron las estructuras *Nodo*, *List*, *double list*, *block* y finalmente *blockchain*. Al unir éstas estructuras se puede replicar una cadena de bloques con las transacciones monetarias entre usuarios de YAPE guardando los números telefónicos del emisor, receptor y el monto que se transfiere. En ese sentido, a continuación se explicará a detalle la metodología de implementación y los resultados obtenidos al poner el proyecto a prueba.
 
 ## DESCRIPCIÓN DEL CASO DE ESTUDIO PLANTEADO
-En ésta revolución tecnológica, la banca no queda fuera. Es así como se han creado Yape y Plin, aplicaciones que simplifican las transacciones monetarias, haciendo posible el envío de dinero haciendo uso de tan sólo números telefónicos. Se conoce que actualmente Yape hace uso de un algoritmo basado en blockchain para asegurar la confidencialidad de sus transacciones, teniendo como datos: Número de teléfono de emisor, Número de teléfono del receptor y finalmente el monto.
+En ésta revolución tecnológica, la banca no queda fuera. Es así como se han creado Yape y Plin, aplicaciones que simplifican las transacciones monetarias, haciendo posible el envío de dinero haciendo uso de tan sólo números telefónicos. Se conoce que actualmente Yape hace uso de un algoritmo basado en blockchain para asegurar la confidencialidad de sus transacciones, teniendo como datos: Número de teléfono de emisor, Número de teléfono del receptor y finalmente el monto. La eficiencia del agoritmo se demuestra gracias a que los intentos de "hackeo" a la aplicación se basan en rápiclas de la interfaz para falsificar el envío de la transacción, mas no pueden falsificar la transacción en sí. 
 
 ## IMPORTANCIA DEL BLOCKCHAIN EN EL DOMINIO DE DATOS ELEGIDOS
 En el año 2019 Facebook intentó crear una especie de monedero virtual basado en blockchain para sus criptomonedas llamadas "Libra". A pesar de que su criptomoneda no tuvo éxito, el sistema que aseguraba la confidencialidad de los datos sí lo hizo. De ésta manera Visa aceptó ser parte de esta revolución tecnológica y adoptó un algoritmo basado en blockchain para permitir la simplificación de éstas operaciones. Gracias a ello el BCP pudo desarrollar su aplicación YAPE, que hasta ahora se mantiene vigente y con muchos usuarios en nuestro país.
-La mayor ventaja radica en la facilidad y eficiencia con la que se logra encriptar los datos, tanto en cada bloque como a lo largo de la cadena, logrando que se asemeje a un libro contable codificado. 
+La mayor ventaja radica en la facilidad y eficiencia con la que se logra encriptar los datos, tanto en cada bloque como a lo largo de la cadena, logrando que se asemeje a un libro contable codificado.
 
 ## EXPLICACIÓN DE LA ESTRUCTURA DE DATOS DEL BLOCKCHAIN
 
@@ -40,8 +40,6 @@ Para representar a la cadena de bloques, se hizo uso de una plantilla de lista d
 Una vez creadas las estructuras del apartado anterior, se pueden crear la estructura *Bloque.h* y *Blockchain.h*. La estrucutura bloque se crea en base a un nodo y contiene los datos necesarios para registrar la transacción. Además, el bloque registra el código del bloque anterior, al cual se puede acceder revisando el *prev* del nodo actual, y también el proof of work que ya se explicó anteriormente. Finalmente, al insertar nuevos bloques, se irá forjando la cadena tal como se muestra en la siguiente imagen:
 
 ![image](https://user-images.githubusercontent.com/40670048/196302842-6f1d1241-9164-4322-b071-beee7e1eb522.png)
-
-
 
 ## ANÁLISIS DE LA COMPLEJIDAD BIG O
 
