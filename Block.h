@@ -52,3 +52,29 @@ public:
     int getIndex(){
         return index;
     }
+    string getHash(){
+        return blockHash;
+    }
+
+    string getPreviousHash(){
+        return prevHash;
+    }
+
+    bool isHashValid(){
+        return generateHash() == getHash();
+    }
+
+    void printBlock(){
+        cout<<"\n\nBlock\n===================================";
+        cout<<"\nIndex: " << getIndex();
+        cout<<"\nmonto: " << data.monto;
+        cout<<"\nemisor: "<< data.emisor;
+        cout<<"\nreceptor: " << data.receptor;
+        cout<<"\nfecha: " << data.fecha;
+        cout<<"\nHash: " << getHash();
+        cout<<"\nHash previo: " << getPreviousHash();
+        cout<<"\nEl bloque es valido?: " << isHashValid()<<endl;
+    }
+};
+
+#endif 
