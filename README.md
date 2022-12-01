@@ -26,6 +26,11 @@ En cuanto a la estructura del bloque, éste es un contenedor que almacena los da
 
 ## EXPLICACIÓN DE LAS ESTRUCTURAS INTERNAS
 
+Se utilizaron estructuras vistas en el curso dependiendo de sus características. Ya que la estructura que más se parece a una cadena es una lista doblemente enlazada, se utilizó esta para la implementación del blockchain como tal. A continuación se muestra el diagrama de clases de la implementación:
+
+<img width="386" alt="diagrama de clases proyecto aed drawio" src="https://user-images.githubusercontent.com/40670048/205085233-90659e38-4457-4a26-bf40-1c11f3e5c291.png">
+
+
 ### LISTA DOBLEMENTE ENLAZADA
 Para representar a la cadena de bloques, se hizo uso de una plantilla de lista doblemente enlazada, pues se asimila mucho a la manera en la que se unen los bloques. Tiene un puntero a la cabeza y otro a la cola. Dentro de la estructura también se hace uso de la estructura nodo, que representaría a cada uno de los bloques que se irán uniendo a la lista.
 
@@ -67,7 +72,7 @@ De esta manera, la complejidad de búsqueda para este caso de blockchain es de O
 La complejidad espacial en éste caso es de O(n + m + l) Siendo n el número de caracteres ingresados, m la cantidad de indicadores de final de palabra y l la cantidad de punteros a los bloques en los que se encuentra el nombre.
 
 #### BÚSQUEDA SIN ÍNDICES
-En el caso de que el blockchain no contara con ninguno de los índices utilizados, el método de búsqueda tendría una complejidad de O(n) pues se tendría que recorrer la lista doblemente enlazada hasta dar con el dato o la cantidad de datos que cumplan con la condición de búsqueda. Tomando en cuenta que pueden haber miles de transacciones con 500 soles o miles de personas con el nombre "Juan" la complejidad temporal podría mantenerse, pero sería necesario aumentar la complejidad espacial para poder sacar estos datos de manera ordenada en otra estructura sólo con el fin de mostrarlos. Luego, por razones de seguridad y buen uso de memoria, esta estructura temporal tendría que ser borrada, aumentando, aunque de manera mínima, la complejidad espacial.
+Sin índices es imposible ingresar a verificar los datos internos del bloque, sin embargo, se podría acceder al ID siempre y cuando se tenga un puntero que nos lleve a la información sólo con el fin de verla. En ese sentido, en el caso de que el blockchain no contara con ninguno de los índices utilizados, el método de búsqueda tendría una complejidad de O(n/) pues se tendría que recorrer la lista doblemente enlazada desde la cola y la cabeza hasta dar con el dato o la cantidad de datos que cumplan con la condición de búsqueda. Tomando en cuenta que pueden haber miles de transacciones con 500 soles o miles de personas con el nombre "Juan" la complejidad temporal podría mantenerse, pero sería necesario aumentar la complejidad espacial para poder sacar estos datos de manera ordenada en otra estructura sólo con el fin de mostrarlos. Luego, por razones de seguridad y buen uso de memoria, esta estructura temporal tendría que ser borrada, aumentando, aunque de manera mínima, la complejidad temporal.
 
 ## CONCLUSIONES
 
