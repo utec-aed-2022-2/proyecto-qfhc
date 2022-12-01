@@ -69,37 +69,4 @@ public:
 
 };
 
-/*
-string Block::getHash() {
-    return blockHash;
-}
-
-
-
-/////////////////////
-void Block::Hash() {
-    cout << "Hash: " << blockHash << endl;
-}
-
-void Block::Nonce() {
-    cout << "Nonce: " << nonce << endl;
-}
-
-void Block::PrevHash() {
-    // cout << "Prev Hash: " << prevHash << endl;
-    if(prevHash == ""){
-        cout << "Prev Hash: null" << endl;
-    } else{
-        cout << "Prev Hash: " << prevHash << endl;
-    }
-}
-
-string Block::Data(){
-    stringstream dat;
-    dat << data.emisor << ";" << data.receptor << ";" 
-    << to_string(data.monto) << ";" << data.fecha;
-    return dat.str();
-}
-*/
-
 #endif
