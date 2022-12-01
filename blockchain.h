@@ -34,9 +34,6 @@ public:
     int size(){
         return chain->size();
     }
-
-    void Show();
-    string showData();
   
 };
 
