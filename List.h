@@ -1,10 +1,30 @@
-#ifndef LIST_H
-#define LIST_H
-
-#include "Node.h"
+#include <iostream>
 #include <string>
 
 using namespace std;
+
+template <typename T>
+struct Node {
+    T data;
+    Node<T>* next;
+    Node<T>* prev;
+
+    Node(){
+        //data;
+        next = nullptr;
+        prev = nullptr;
+    }
+
+    Node(T value){
+        data = value;
+        next = nullptr;
+        prev = nullptr;
+    }
+
+    void killSelf(){
+        delete this;
+    }
+};
 
 template <class T>
 class ListIterator;
@@ -30,15 +50,15 @@ public:
     virtual T pop_front() = 0;
     virtual T pop_back() = 0;
     virtual T insert(T, int) = 0;
-    virtual void remove(int) = 0;
+    virtual bool remove(int) = 0;
     virtual T& operator[](int) = 0;
     virtual bool is_empty() = 0;
     virtual int size() = 0;
     virtual void clear() = 0;
     //virtual void sort() = 0;
     //virtual bool is_sorted() = 0;
-    virtual void reverse() = 0;
-    virtual std::string name() = 0;
+    //virtual void reverse() = 0;
+    //virtual std::string name() = 0;
     //virtual void display() = 0;
 };
 
@@ -82,5 +102,3 @@ template <class T>
 bool ListIterator<T>::operator!=(ListIterator<T> other){
     return current != other.current;
 }
-
-#endif 
