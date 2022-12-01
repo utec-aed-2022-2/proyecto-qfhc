@@ -45,7 +45,7 @@ public:
     {
         return find(this->root, value);
     }
-    bool genFind(T value)
+    void genFind(T value)
     {
         return genFind(this->root, value);
     }
@@ -147,10 +147,10 @@ private:
             node = new NodeBT<T>(value);
         }
         else if (greater(value, node->data)) {
-            insert(node->right, value);
+            genInsert(node->right, value);
         }
         else {
-            insert(node->left, value);
+            genInsert(node->left, value);
         }
         updateHeight(node);
         balance(node);
@@ -167,6 +167,18 @@ private:
         else
             return true;
     }
+    void genFind(NodeBT<T> *node, T value)
+    {
+        if (node == nullptr)
+            return;
+        else if (greater(node->data, value))
+            return genFind(node->left, value);
+        else if (greater(value, node->data))
+            return genFind(node->right, value);
+        else
+            print(node->data);
+    }
+
     void range_search(NodeBT<T> *node, T start, T end){
         if(node == nullptr)
             return;
@@ -182,12 +194,12 @@ private:
         if(node == nullptr)
             return;
         if(greater(node->data, start))
-            range_search(node->left, start, end);
-        if ((greater(node->data, start)||(!(greater(start,node->data)&&greater(node->data,start)))) && 
-            (greater(end,node->data)||(!(greater(end,node->data)&&greater(node->data,end)))))
+            genRangeSearch(node->left, start, end);
+        if ((greater(node->data, start)||(!greater(start,node->data) && !greater(node->data,start))) && 
+            (greater(end,node->data)||(!greater(end,node->data) && !greater(node->data,end))))
             print(node->data);
         if(greater(end, node->data))
-            range_search(node->right, start, end);
+            genRangeSearch(node->right, start, end);
     }
     
     int Height(NodeBT<T> *node)
@@ -197,7 +209,6 @@ private:
         else
             return node->height;
     }
-    
     
     bool isBalanced(NodeBT<T> *node)
     {
@@ -216,7 +227,6 @@ private:
         else
             return minValue(node->left);
     }
-    
     
     T maxValue(NodeBT<T> *node)
     {
