@@ -6,7 +6,6 @@
 * Harold Canto
 * Franco Pacheco
 * Qespisisa Bustos
-* Christopher Flores
 
 ## INTRODUCCIÓN
 El siguiente proyecto replica el funcionamiento de la aplicación YAPE a través el algoritmo *Blockchain*. Para ello se desarrollaron las estructuras *Nodo*, *List*, *double list*, *block* y finalmente *blockchain*. Al unir éstas estructuras se puede imitar una cadena de bloques con las transacciones monetarias entre usuarios de YAPE guardando los números telefónicos del emisor, receptor y el monto que se transfiere. En ese sentido, a continuación se explicará a detalle la metodología de implementación y los resultados obtenidos al poner el proyecto a prueba.
@@ -31,6 +30,10 @@ En cuanto a la estructura del bloque, éste es un contenedor que almacena los da
 
 ## EXPLICACIÓN DE LAS ESTRUCTURAS INTERNAS
 
+Se utilizaron estructuras propias creadas a lo largo del curso. A continuación se explicará cada una de las estructuras utilizadas y el por qué de su aplicación para éste proyecto.
+
+![diagrama de clases proyecto aed drawio](https://user-images.githubusercontent.com/40670048/204968902-f4c14ee3-b9cb-4fc8-b5d8-9d2eba6c5a65.png)
+
 ### LISTA DOBLEMENTE ENLAZADA
 Para representar a la cadena de bloques, se hizo uso de una plantilla de lista doblemente enlazada, pues se asimila mucho a la manera en la que se unen los bloques. Tiene un puntero a la cabeza y otro a la cola. Dentro de la estructura también se hace uso de la estructura nodo, que representaría a cada uno de los bloques que se irán uniendo a la lista.
 
@@ -41,6 +44,16 @@ Una vez creadas las estructuras del apartado anterior, se pueden crear la estruc
 
 ![image](https://user-images.githubusercontent.com/40670048/196302842-6f1d1241-9164-4322-b071-beee7e1eb522.png)
 
+
+### ARRAY
+Si se guardara una sola transacción por bloque, se estaría ocupando espacio de memoria para crear un nodo en la lista enlazada además de los 70 bytes de información de entrada, debido a los tipos de variable que se almacenan. Esto se puede reducir significativamente si se almacena más de una transacción por nodo. Para ello se utilizó una estructura sencilla, el vector.
+
+### AVL
+Con el fin de facilitar la búsqueda de transacciones dentro de los bloques, se utilizó un arbol AVL ordenado por la cantidad de montos a manera de índice. Se eligió ésta estructura porque era más sencillo generalizar el ingreso de datos y a que gracias a la sobrecarga de operadores siempre se encontrarían ordenados de mayor a menor tomando en cuenta sólo la variable monto.
+
+### TRIE
+Debido a que ya no se podía sobrecargar nuevamente los operadores, se hizo uso de dos árboles trie a manera de índices para ordenar los nombres tanto de los emisores como los receptores. Ésto facilitaría la búsqueda ya que el tiempo de búsqueda sería O(n) con n siendo la cantidad de caracteres del nombre. Además, al tener un identificador al final de la palabra, éste se pudo utilizar para almacenar punteros a cada bloque en el que se guardara la información que coincidiera con el nombre ingresado.
+
 ## ANÁLISIS DE LA COMPLEJIDAD BIG O
 
 ### MÉTODO INSERTAR
@@ -48,6 +61,8 @@ Debido a que la inserción se realiza de manera manual, es complicado hacer prue
 
 ### MÉTODO BUSCAR
 *Aún no se ha implementado éste método*
+
+## ÍNDICES
 
 ## CONCLUSIONES
 
