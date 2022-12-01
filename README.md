@@ -36,20 +36,48 @@ Una vez creadas las estructuras del apartado anterior, se pueden crear la estruc
 
 ![image](https://user-images.githubusercontent.com/40670048/196302842-6f1d1241-9164-4322-b071-beee7e1eb522.png)
 
+### AVL
+La estructura se eligió porque era sencillo generalizar el tipo de datos que ingresarían, por lo que se pudo guardar un puntero que nos pudiera brindar la información de la transacción. Esto con el fin de evitar duplicar los datos y al mismo tiempo mantenerlos seguros, ya que puede mostrar los datos, mas no modificarlos.
 
+### TRIE
+Se crearon dos árboles de éste tipo, uno para los nombres de los usuarios emisores y otro para los receptores. No se utilizó una estructura AVL porque los operadores de comparación ya están sobrecargados con otro atributo. Además, al ser nombres, los trie pueden trabajar con caractares de manera eficiente.
+
+Se crearon dos estructuras con el fin de agilizar la búsqueda por tipo de transacción, ya que los usuarios pueden ser tanto emisores como receptores o ambos casos. En caso se deseara utilizar un solo trie necesitaría un identificador extra a parte del bool "end" para identificar si el nomnbre es de un receptor o de un emisor, la complejidad se mantendría igual, pues se estaría añadiendo sólo un dato más por verificar.
+
+Para poder obtener los datos completos de la transacción, se colocó un puntero al final de cada palabra que dirija a cada uno de los bloques en los que se encuentra el nombre. De ésta manera, nuevamente se evita duplicar datos y se puede obtener la información de manera segura ya que se puede acceder mediante el puntero a la información sólo para ser mostrada, más no editada.
 
 ## ANÁLISIS DE LA COMPLEJIDAD BIG O
 
 ### MÉTODO INSERTAR
-Debido a que la inserción se realiza de manera manual, es complicado hacer pruebas para registrar el tiempo que toma insertar cierta cantidad de datos, por lo que no se puede realizar una prueba como tal. Sin embargo, se puede analizar la función *add block* mediante la cual se inserta un nuevo bloque a la cadena. Ésta función accede en O(1) a la lista doblemente enlazada gracias al puntero a la cola y por tanto inserta el nuevo bloque de manera directa, sin recorrer los datos previos. Por tanto, el método de inserción es O(1).
+El algoritmo blockchain como tal no tiene una complejidad específica ya que depende de las estructuras con las que se haya creado. Para éste caso en específico, se puede analizar la función *add block* mediante la cual se inserta un nuevo bloque a la cadena. Ésta función accede en O(1) a la lista doblemente enlazada gracias al puntero a la cola y por tanto inserta el nuevo bloque de manera directa. No es necesario recorrer los datos anteriores porque una de las funciones del BlockChain es mantener los datos previos inalterados y seguros, sólo permite ingreso de nuevas transacciones al final de la lista. Por tanto, el método de inserción es O(1).
 
 ### MÉTODO BUSCAR
-*Aún no se ha implementado éste método*
+Para éste caso, al igual que en método de inserción, se tomará en cuenta a las estructuras utilizadas para los índices:
+
+* En el caso del AVL, gracias a que esta estructura se autobalancea, mantiene los datos ordenados en su estructura. El atributo que se escogió para lograr este ordenamiento fue el monto de la transacción. De ésta manera, se puede acceder al valor buscado en una complejidad O(logn).
+
+Se sobrecargaron los operadores de comparación para poder realizar las comparaciones con solo el operador monto, lo que significa que si utilizaramos esta estructura para buscar nombres, la complejidad sería O(n).
+
+La complejidad espacial sería O(n x m) ya que depende del tipo de dato que se almacena en el AVL, en este caso un puntero y de la cantidad de datos ingresados en el árbol.
+
+* En el caso del TIRE La complejidad de búsqueda en esta estructura es O(m) tomando en cuenta que m es la longitud de la palabra. Por tanto la complejidad de búsqueda para el caso de los nombres de receptores o emisores sería O(m)
+
+De esta manera, la complejidad de búsqueda para este caso de blockchain es de O(logn) en el caso de que la búsqueda se realice por montos y O(m) en el caso de que la búsqueda se realice por nombres.
+
+La complejidad espacial en éste caso es de O(n + m + l) Siendo n el número de caracteres ingresados, m la cantidad de indicadores de final de palabra y l la cantidad de punteros a los bloques en los que se encuentra el nombre.
+
+#### BÚSQUEDA SIN ÍNDICES
+En el caso de que el blockchain no contara con ninguno de los índices utilizados, el método de búsqueda tendría una complejidad de O(n) pues se tendría que recorrer la lista doblemente enlazada hasta dar con el dato o la cantidad de datos que cumplan con la condición de búsqueda. Tomando en cuenta que pueden haber miles de transacciones con 500 soles o miles de personas con el nombre "Juan" la complejidad temporal podría mantenerse, pero sería necesario aumentar la complejidad espacial para poder sacar estos datos de manera ordenada en otra estructura sólo con el fin de mostrarlos. Luego, por razones de seguridad y buen uso de memoria, esta estructura temporal tendría que ser borrada, aumentando, aunque de manera mínima, la complejidad espacial.
 
 ## CONCLUSIONES
+
+* El algoritmo blockchain puede ser implementado a partir de estrucutras de datos vistas a lo largo del curso.
+* La complejidad espacial y temporal de sus métodos, dependerá de las estrucutras con las que se haya construído el algoritmo. Para este caso en particular, la complejidad de inserción fue O(1) y la de búsqueda O(logn) o O(m) dependiendo del atributo de búsqueda.
+* Gracias al uso de índices se puede reducir el tiempo de búsqueda significativamente aunque de ésta manera se esté ocupando más espacio de memoria.
+* El proof of work nos permite mantener la confiabilidad y seguridad de los datos guardados en los bloques.
 
 ## REFERENCIAS BIBLIOGRÁFICAS
 * [“Yape del BCP, la transformación empresarial que retará Libra de Facebook”, por Sergio Sicheri](https://elcomercio.pe/tecnologia/bcp-app-yape-transformacion-empresarial-retara-libra-facebook-sergio-sicheri-nnda-noticia-650359-noticia/?ref=ecr)
 * [¿Cómo la Banca puede aprovechar la tecnología Blockchain?](https://www.fisagrp.com/blogs/la-banca-aprovecha-la-tecnologia-blockchain.html)
-
+* [Trie – Estructura de Datos](https://oiaunlam.wordpress.com/2016/05/02/trie/)
 
