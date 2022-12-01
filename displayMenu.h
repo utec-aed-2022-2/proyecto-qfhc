@@ -104,6 +104,7 @@ void displayMenu(Blockchain* &blockchain, AVLTree<TBData*>* &avl, string filenam
               cout << "\n";
 
               blockchain->addBlock(Block(id, bdata));
+	      avl->genInsert(bdata);
               accessFileDB(filenameDB, data);
 
               data = dat = "";
